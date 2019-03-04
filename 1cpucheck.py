@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #!python
 
 """Hello world Nagios check."""
@@ -45,3 +46,7 @@ def main():
         Load(args.percpu),
         nagiosplugin.ScalarContext('load', args.warning, args.critical))
     check.main()
+
+
+if __name__ == '__main__':
+    main()
