@@ -1,3 +1,4 @@
+#!/usr/bin/python#!/usr/bin/python
 #!python
 
 """Hello world Nagios check."""
