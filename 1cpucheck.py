@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """Hello world Nagios check."""
-
+import argparse
 import nagiosplugin
 
 class Load(nagiosplugin.Resource):
