@@ -95,4 +95,4 @@ def main():
        sys.exit(UNKNOWN)
 
 if __name__ == "__main__":
-main()
+    main()
