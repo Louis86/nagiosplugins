@@ -3,7 +3,7 @@ from pyVmomi import vim
 import ssl
 import humanize
 
-
+MBFACTOR = float(1 << 20)
 try:
     c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
     print('Valid certificate')
@@ -20,3 +20,6 @@ for i in vms:
     hosts = i.host
     for host in hosts:
         print(host.name)
+
+
+Disconnect(c)
