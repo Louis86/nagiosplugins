@@ -2,6 +2,7 @@
 """Hello world Nagios check."""
 import argparse
 import nagiosplugin
+import logging
 
 class Load(nagiosplugin.Resource):
     """Domain model: system load.
@@ -17,16 +18,16 @@ class Load(nagiosplugin.Resource):
         self.percpu = percpu
 
     def cpus(self):
-        _log.info('counting cpus with "nproc"')
+        logging.info('counting cpus with "nproc"')
         cpus = int(subprocess.check_output(['nproc']))
-        _log.debug('found %i cpus in total', cpus)
+        logging.debug('found %i cpus in total', cpus)
         return cpus
 
     def probe(self):
-        _log.info('reading load from /proc/loadavg')
+        logging.info('reading load from /proc/loadavg')
         with open('/proc/loadavg') as loadavg:
             load = loadavg.readline().split()[0:3]
-        _log.debug('raw load is %s', load)
+        logging.debug('raw load is %s', load)
         cpus = self.cpus() if self.percpu else 1
         load = [float(l) / cpus for l in load]
         for i, period in enumerate([1, 5, 15]):
