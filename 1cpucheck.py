@@ -1,6 +1,4 @@
 #!/usr/bin/python
-#!python
-
 """Hello world Nagios check."""
 
 import nagiosplugin
@@ -32,20 +30,20 @@ class Load(nagiosplugin.Resource):
         cpus = self.cpus() if self.percpu else 1
         load = [float(l) / cpus for l in load]
         for i, period in enumerate([1, 5, 15]):
-            yield nagiosplugin.Metric('load%d' % period, load[i], min=0,
-                                      context='load')
-def main():
-    argp = argparse.ArgumentParser(description=__doc__)
-    argp.add_argument('-w', '--warning', metavar='RANGE', default='',
-                      help='return warning if load is outside RANGE')
-    argp.add_argument('-c', '--critical', metavar='RANGE', default='',
-                      help='return critical if load is outside RANGE')
-    argp.add_argument('-r', '--percpu', action='store_true', default=False)
-    args = argp.parse_args()
-    check = nagiosplugin.Check(
-        Load(args.percpu),
-        nagiosplugin.ScalarContext('load', args.warning, args.critical))
-    check.main()
+            yield nagiosplugin.Metric('load%d' % period, load[i], min=0, context='load')
+            
+    def main():
+        argp = argparse.ArgumentParser(description=__doc__)
+        argp.add_argument('-w', '--warning', metavar='RANGE', default='',
+                          help='return warning if load is outside RANGE')
+        argp.add_argument('-c', '--critical', metavar='RANGE', default='',
+                          help='return critical if load is outside RANGE')
+        argp.add_argument('-r', '--percpu', action='store_true', default=False)
+        args = argp.parse_args()
+        check = nagiosplugin.Check(
+            Load(args.percpu),
+            nagiosplugin.ScalarContext('load', args.warning, args.critical))
+        check.main()
 
 
 if __name__ == '__main__':
