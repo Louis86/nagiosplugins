@@ -48,6 +48,6 @@ for i in vms:
     hosts = i.host
     for host in hosts:
         print(host.name)
-        print(HostInformation(host))
+        print(printHostInformation(host))
 
 Disconnect(c)
