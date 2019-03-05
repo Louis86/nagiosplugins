@@ -2,6 +2,10 @@ from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
 import humanize
+import argparse
+import nagiosplugin
+import logging
+
 
 
 MBFACTOR = float(1 << 20)
