@@ -37,13 +37,10 @@ def MetricCpu(host):
 
 def main():
     argp = argparse.ArgumentParser(description=__doc__)
-    argp.add_argument('-w', '--warning', metavar='RANGE', default='',
-                      help='return warning if load is outside RANGE')
-    argp.add_argument('-c', '--critical', metavar='RANGE', default='',
-                      help='return critical if load is outside RANGE')
+    argp.add_argument('-w', '--warning', metavar='RANGE', default='', help='return warning if load is outside RANGE')
+    argp.add_argument('-c', '--critical', metavar='RANGE', default='', help='return critical if load is outside RANGE')
     argp.add_argument('-r', '--percpu', action='store_true', default=False)
-    argp.add_argument('-v', '--verbose', action='count', default=0,
-                      help='increase output verbosity (use up to 3 times)')
+    argp.add_argument('-v', '--verbose', action='count', default=0, help='increase output verbosity (use up to 3 times)')
     args = argp.parse_args()
 
 
