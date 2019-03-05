@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
@@ -20,6 +22,4 @@ for i in vms:
     hosts = i.host
     for host in hosts:
         print(host.name)
-
-
 Disconnect(c)
