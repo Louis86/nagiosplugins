@@ -34,35 +34,39 @@ def CpuInformation(host):
 def MetricCpu(host):
     return nagiosplugin.Metric('cpuPercentage', CpuInformation(host), min=0)
 
-
-def main():
+def ArgParser():
     argp = argparse.ArgumentParser(description=__doc__)
     argp.add_argument('-w', '--warning', metavar='RANGE', default='', help='return warning if load is outside RANGE')
     argp.add_argument('-c', '--critical', metavar='RANGE', default='', help='return critical if load is outside RANGE')
-    argp.add_argument('-r', '--percpu', action='store_true', default=False)
+    argp.add_argument('-r', '--cpu', action='store_true', default=False)
     argp.add_argument('-v', '--verbose', action='count', default=0, help='increase output verbosity (use up to 3 times)')
     args = argp.parse_args()
+    return args
 
 
-s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-s.verify_mode = ssl.CERT_NONE
+def Connection():
+    s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    s.verify_mode = ssl.CERT_NONE
 
-try:
-    c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
-    print('Valid certificate')
-except:
-    c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
-    print('Invalid or untrusted certificate')
+    try:
+        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
+        print('Valid certificate')
+    except:
+        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
+        print('Invalid or untrusted certificate')
 
-datacenter = c.content.rootFolder.childEntity[0]
-vms = datacenter.hostFolder.childEntity
-for i in vms:
-    hosts = i.host
-    for host in hosts:
-        check = nagiosplugin.Check(MetricCpu(host))
-        check.main(verbose=args.verbose)
+    datacenter = c.content.rootFolder.childEntity[0]
+    vms = datacenter.hostFolder.childEntity
+    for i in vms:
+        hosts = i.host
+        for host in hosts:
+            yield host
+    Disconnect(c)
 
-Disconnect(c)
+
+def main():
+
+
 
 if __name__ == '__main__':
     main()
