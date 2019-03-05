@@ -27,27 +27,31 @@ def printHostInformation(host):
         pass
 
 
+def connect():
+    s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    s.verify_mode = ssl.CERT_NONE
+    try:
+        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
+        print('Valid certificate')
+    except:
+        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
+        print('Invalid or untrusted certificate')
 
 
-s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-s.verify_mode = ssl.CERT_NONE
+    datacenter = c.content.rootFolder.childEntity[0]
+    vms = datacenter.hostFolder.childEntity
 
-try:
-    c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
-    print('Valid certificate')
-except:
-    c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
-    print('Invalid or untrusted certificate')
+    for i in vms:
+        print(i.name)
+        hosts = i.host
+        for host in hosts:
+            yield nagiosplugin.Metric(printHostInformation(host))
+    Disconnect(c)
 
 
-datacenter = c.content.rootFolder.childEntity[0]
-vms = datacenter.hostFolder.childEntity
+def main():
+    check = nagiosplugin.Check(connect())
+    check.main()
 
-for i in vms:
-    print(i.name)
-    hosts = i.host
-    for host in hosts:
-        print(host.name)
-        print(printHostInformation(host))
-
-Disconnect(c)
+if __name__ == '__main__':
+    main()
