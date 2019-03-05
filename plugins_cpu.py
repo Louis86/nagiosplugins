@@ -20,6 +20,7 @@ def printHostInformation(host):
         cpuTotal = cpuHz*cpuCores*cpuPackage*0.000001
         cpuUsage = stats.overallCpuUsage
         cpuPercentage = (cpuUsage/cpuTotal)*100
+        print("CPU percentage",cpuPercentage)
     except Exception as error:
         print("Unable to access information for host: ", host.name)
         print(error)
@@ -40,4 +41,5 @@ for i in vms:
     hosts = i.host
     for host in hosts:
         print(host.name)
+        printHostInformation(host)
 Disconnect(c)
