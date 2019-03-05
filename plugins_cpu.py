@@ -6,6 +6,36 @@ import ssl
 import humanize
 
 MBFACTOR = float(1 << 20)
+
+
+def printHostInformation(host):
+    try:
+        summary = host.summary
+        stats = summary.quickStats
+        hardware = host.hardware
+        cpu = hardware.cpuInfo
+        cpuPackage = cpu.numCpuPackages
+        cpuCores = cpu.numCpuCores
+        cpuHz = cpu.hz
+        cpuTotal = cpuHz*cpuCores*cpuPackage*0.000001
+        cpuUsage = stats.overallCpuUsage
+        cpuPercentage = (cpuUsage/cpuTotal)*100
+        print("------------------------------------------------")
+        print("Host name: ", host.name)
+        print("NumCPU", cpu)
+        print("cpu Package", cpuPackage)
+        print("cpu cores", cpuCores)
+        print("Host CPU usage: ", cpuUsage)
+        print("frequence", cpuHz)
+        print("frequence totale",cpuTotal )
+        print("CPU percentage",cpuPercentage)
+        print("--------------------------------------------------")
+    except Exception as error:
+        print("Unable to access information for host: ", host.name)
+        print(error)
+        pass
+
+
 try:
     c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
     print('Valid certificate')
