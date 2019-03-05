@@ -59,9 +59,6 @@ except:
 
 datacenter = c.content.rootFolder.childEntity[0]
 vms = datacenter.hostFolder.childEntity
-
-
-
 for i in vms:
     hosts = i.host
     for host in hosts:
