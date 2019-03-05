@@ -4,6 +4,10 @@ from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
 import humanize
+import argparse
+import nagiosplugin
+import logging
+
 
 MBFACTOR = float(1 << 20)
 
@@ -26,6 +30,26 @@ def CpuInformation(host):
         print(error)
         return none
         pass
+
+def MetricCpu(host):
+    return nagiosplugin.Metric('cpuPercentage', CpuInformation(host), min=0)
+
+
+def main():
+    argp = argparse.ArgumentParser(description=__doc__)
+    argp.add_argument('-w', '--warning', metavar='RANGE', default='',
+                      help='return warning if load is outside RANGE')
+    argp.add_argument('-c', '--critical', metavar='RANGE', default='',
+                      help='return critical if load is outside RANGE')
+    argp.add_argument('-r', '--percpu', action='store_true', default=False)
+    argp.add_argument('-v', '--verbose', action='count', default=0,
+                      help='increase output verbosity (use up to 3 times)')
+    args = argp.parse_args()
+
+
+s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+s.verify_mode = ssl.CERT_NONE
+
 try:
     c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
     print('Valid certificate')
@@ -36,11 +60,15 @@ except:
 datacenter = c.content.rootFolder.childEntity[0]
 vms = datacenter.hostFolder.childEntity
 
+
+
 for i in vms:
-    print(i.name)
     hosts = i.host
     for host in hosts:
-        print(host.name)
-        print(CpuInformation(host))
+        check = nagiosplugin.Check(MetricCpu(host))
+        check.main(verbose=args.verbose)
 
 Disconnect(c)
+
+if __name__ == '__main__':
+    main()
