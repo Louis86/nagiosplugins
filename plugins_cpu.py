@@ -32,7 +32,7 @@ def CpuInformation(host):
         pass
 
 def MetricCpu(host):
-    return nagiosplugin.Metric('cpuPercentage', CpuInformation(host), min=0)
+    return nagiosplugin.Metric('cpuPercentage', CpuInformation(host),  min=0, max=100)
 
 def ArgParser():
     argp = argparse.ArgumentParser(description=__doc__)
