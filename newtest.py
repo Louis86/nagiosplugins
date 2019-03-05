@@ -67,11 +67,4 @@ for i in vms:
         print(host.name)
         printHostInformation(host)
 
-
-
-
-
-
-
-
 Disconnect(c)
