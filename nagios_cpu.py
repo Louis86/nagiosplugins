@@ -34,19 +34,24 @@ def printHostInformation(host):
             print(cpuPercentage)
         elif cpuPercentage >= 60 and cpuPercentage <= 80:
             print(cpuPercentage)
-            #sys.exit(WARNING)
+            sys.exit(WARNING)
         elif cpuPercentage > 80:
             print(cpuPercentage)
-            #sys.exit(CRITICAL)
+            sys.exit(CRITICAL)
         else:
             print(cpuPercentage)
-            #sys.exit(UNKNOWN )
+            sys.exit(UNKNOWN )
     except Exception as error:
         print("Unable to access information for host: ", host.name)
         print(error)
         return none
         pass
 
+def arg():
+    parser = argparse.ArgumentParser(description="CPU Check")
+    parser.add_argument('-cpu', help='percentage cpu usage')
+    args = parser.parse_args()
+    return args
 
 def connect():
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
