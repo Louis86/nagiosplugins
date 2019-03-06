@@ -53,8 +53,8 @@ def connect():
 
 
 def main():
-
-    print(connect())
+    for n in connect()
+    print(n)
 
 if __name__ == '__main__':
     main()
