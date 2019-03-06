@@ -49,7 +49,7 @@ def connect():
         print(i.name)
         hosts = i.host
         for host in hosts:
-            yield nagiosplugin.Metric(printHostInformation(host))
+            yield nagiosplugin.Metric('Identifiant',printHostInformation(host), uom='%')
     Disconnect(c)
 
 
