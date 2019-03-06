@@ -33,12 +33,15 @@ def printHostInformation(host):
             print(memoryUsage)
         elif memoryUsage >= 60 and memoryUsage <= 80:
             print(memoryUsage)
+            print("WARNING")
             #sys.exit(WARNING)
         elif memoryUsage > 80:
             print(memoryUsage)
+            print("CRITICAL")
             #sys.exit(CRITICAL)
         else:
             print(memoryUsage)
+            print("UNKNOWN")
             #sys.exit(UNKNOWN )
     except Exception as error:
         print("Unable to access information for host: ", host.name)
