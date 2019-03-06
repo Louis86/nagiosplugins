@@ -46,14 +46,14 @@ def connect():
     vms = datacenter.hostFolder.childEntity
 
     for i in vms:
-        print(i.name)
         hosts = i.host
         for host in hosts:
-            yield nagiosplugin.Metric('Identifiant cpu',printHostInformation(host), uom='%')
+            yield printHostInformation(host)
     Disconnect(c)
 
 
 def main():
+
     print(connect())
 
 if __name__ == '__main__':
