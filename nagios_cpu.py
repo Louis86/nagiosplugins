@@ -29,7 +29,7 @@ def printHostInformation(host):
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
         if  cpuPercentage < 60:
-            #sys.exit(OK)
+            sys.exit(OK)
             print("OK")
             print(cpuPercentage)
         elif cpuPercentage >= 60 and cpuPercentage <= 80:
