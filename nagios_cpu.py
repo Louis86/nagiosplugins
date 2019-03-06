@@ -31,7 +31,7 @@ def printHostInformation(host):
         pass
 
 
-def connect(nagiosplugin.Resource):
+def connect(nagiosplugin.resource):
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
