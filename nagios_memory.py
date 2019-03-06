@@ -23,7 +23,7 @@ def printHostInformation(host):
         hardware = host.hardware
         memoryCapacity = hardware.memorySize
         memoryCapacityInMB = hardware.memorySize/MBFACTOR
-        memoryUsage = (float(stats.overallMemoryUsage) / memoryCapacityInMB))*100
+        memoryUsage = (float(stats.overallMemoryUsage) / memoryCapacityInMB)*100
         freeMemoryPercentage = 100 - (
                 (float(memoryUsage) / memoryCapacityInMB) * 100
             )
