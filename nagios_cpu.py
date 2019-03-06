@@ -48,7 +48,7 @@ def connect():
     for i in vms:
         hosts = i.host
         for host in hosts:
-            yield printHostInformation(host)
+            return printHostInformation(host)
     Disconnect(c)
 
 
