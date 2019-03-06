@@ -44,17 +44,17 @@ def connect():
 
     datacenter = c.content.rootFolder.childEntity[0]
     vms = datacenter.hostFolder.childEntity
-
+    list = []
     for i in vms:
         hosts = i.host
         for host in hosts:
-            return printHostInformation(host)
+            list = printHostInformation(host)
+    return list
     Disconnect(c)
 
 
 def main():
-    for n in connect()
-    print(n)
+    print(connect())
 
 if __name__ == '__main__':
     main()
