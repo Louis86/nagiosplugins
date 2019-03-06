@@ -29,18 +29,18 @@ def printHostInformation(host):
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
         if  cpuPercentage < 60:
-            sys.exit(OK)
+            #sys.exit(OK)
             print("OK")
             print(cpuPercentage)
         elif cpuPercentage >= 60 and cpuPercentage <= 80:
             print(cpuPercentage)
-            sys.exit(WARNING)
+            #sys.exit(WARNING)
         elif cpuPercentage > 80:
             print(cpuPercentage)
-            sys.exit(CRITICAL)
+            #sys.exit(CRITICAL)
         else:
             print(cpuPercentage)
-            sys.exit(UNKNOWN )
+            #sys.exit(UNKNOWN )
     except Exception as error:
         print("Unable to access information for host: ", host.name)
         print(error)
