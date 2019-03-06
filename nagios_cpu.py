@@ -31,7 +31,7 @@ def printHostInformation(host):
         pass
 
 
-def connect(nagiosplugin.resource):
+def connect():
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
@@ -49,13 +49,12 @@ def connect(nagiosplugin.resource):
         print(i.name)
         hosts = i.host
         for host in hosts:
-            yield nagiosplugin.Metric('Identifiant',printHostInformation(host), uom='%')
+            yield nagiosplugin.Metric('Identifiant cpu',printHostInformation(host), uom='%')
     Disconnect(c)
 
 
 def main():
-    check = nagiosplugin.Check(connect())
-    check.main()
+    print(connect())
 
 if __name__ == '__main__':
     main()
