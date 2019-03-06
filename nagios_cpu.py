@@ -49,7 +49,7 @@ def printHostInformation(host):
 
 def arg():
     parser = argparse.ArgumentParser(description="CPU Check")
-    parser.add_argument('-cpu', help='percentage cpu usage')
+    parser.add_argument('-cpu', help='percentage cpu usage' ,action="store_true")
     args = parser.parse_args()
     return args
 
@@ -76,6 +76,7 @@ def connect():
 
 
 def main():
+    arg()
     connect()
 
 if __name__ == '__main__':
