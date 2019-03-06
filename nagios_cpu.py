@@ -50,7 +50,7 @@ def connect():
         for host in hosts:
             list = printHostInformation(host)
     return list
-    Disconnect(c)
+    #Disconnect(c)
 
 
 def main():
