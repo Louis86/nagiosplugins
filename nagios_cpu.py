@@ -89,7 +89,7 @@ def connect():
             table = []
             if printHostInformation(host) == 0:
                 print("OK")
-                a += a
+                return a += a
             elif printHostInformation(host) == 1:
                 print("WARNING")
             elif printHostInformation(host) == 2:
