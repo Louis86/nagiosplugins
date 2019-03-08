@@ -81,9 +81,10 @@ def connect():
     datacenter = c.content.rootFolder.childEntity[0]
     vms = datacenter.hostFolder.childEntity
     list = []
+    a  = 0
     for i in vms:
         hosts = i.host
-        a  = 0
+
         for host in hosts:
             print(host.name)
             if printHostInformation(host) == 0:
@@ -97,7 +98,7 @@ def connect():
             else:
                 print("UNKNOWN")
 
-            return list
+    return list
 
     Disconnect(c)
 
