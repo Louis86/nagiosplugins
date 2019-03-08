@@ -83,10 +83,9 @@ def connect():
     list = []
     for i in vms:
         hosts = i.host
+        a  = 0
         for host in hosts:
             print(host.name)
-            a  = 0
-
             if printHostInformation(host) == 0:
                 print("OK")
                 a += a
