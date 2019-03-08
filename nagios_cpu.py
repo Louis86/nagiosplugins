@@ -29,10 +29,10 @@ def printHostInformation(host):
         cpuUsage = stats.overallCpuUsage
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
-            countOk = 0
-            countWarning = 0
-            countCritical = 0
-            countUnknown = 0
+            #countOk = 0
+            #countWarning = 0
+            #countCritical = 0
+            #countUnknown = 0
 
         if  cpuPercentage < 60:
             #countOk +=1
