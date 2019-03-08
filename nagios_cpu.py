@@ -86,7 +86,7 @@ def connect():
         for host in hosts:
             print(host.name)
             a ,b,c,d = 0
-            table[]
+            table = []
             if printHostInformation(host) == 0:
                 print("OK")
                 a+=a
