@@ -97,7 +97,7 @@ def connect():
                 print("CRITICAL")
             else:
                 print("UNKNOWN")
-            return table[]
+            return table
     Disconnect(c)
 
 
