@@ -85,14 +85,25 @@ def connect():
         hosts = i.host
         for host in hosts:
             print(host.name)
+            a ,b,c,d = 0
+            table[]
             if printHostInformation(host) == 0:
                 print("OK")
+                a+=a
+                table[0]=a
+            elif printHostInformation(host) == 1:
+                print("WARNING")
+            elif printHostInformation(host) == 2:
+                print("CRITICAL")
+            else:
+                print("UNKNOWN")
+            return table[]
     Disconnect(c)
 
 
 def main():
     arg()
-    connect()
+    print(connect())
 
 if __name__ == '__main__':
     main()
