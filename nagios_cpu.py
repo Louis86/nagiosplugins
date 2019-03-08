@@ -33,12 +33,10 @@ def printHostInformation(host):
             #sys.exit(OK)
             print("OK")
             print(cpuPercentage)
-            a = 70
-        elif a >= 60 and cpuPercentage <= 80:
+        elif cpuPercentage >= 60 and cpuPercentage <= 80:
             print(cpuPercentage)
             #sys.exit(WARNING)
-            b = 90
-        elif b > 80:
+        elif cpuPercentage > 80:
             print(cpuPercentage)
             #sys.exit(CRITICAL)
         else:
