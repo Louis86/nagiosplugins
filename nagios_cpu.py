@@ -85,7 +85,7 @@ def connect():
         hosts = i.host
         for host in hosts:
             print(host.name)
-            if (printHostInformation(host) == 0)
+            if printHostInformation(host) == 0:
                 print("OK")
     Disconnect(c)
 
