@@ -86,11 +86,11 @@ def connect():
         for host in hosts:
             print(host.name)
             a  = 0
-            table = []
+
             if printHostInformation(host) == 0:
                 print("OK")
                 a += a
-                table = a
+                list = a
             elif printHostInformation(host) == 1:
                 print("WARNING")
             elif printHostInformation(host) == 2:
@@ -98,7 +98,7 @@ def connect():
             else:
                 print("UNKNOWN")
 
-            return table
+            return list
 
     Disconnect(c)
 
