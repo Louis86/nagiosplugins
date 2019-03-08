@@ -90,14 +90,16 @@ def connect():
             if printHostInformation(host) == 0:
                 print("OK")
                 a += a
-                return a
+                table = a
             elif printHostInformation(host) == 1:
                 print("WARNING")
             elif printHostInformation(host) == 2:
                 print("CRITICAL")
             else:
                 print("UNKNOWN")
-            
+
+            return table
+
     Disconnect(c)
 
 
