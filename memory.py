@@ -70,7 +70,7 @@ def connect():
         for host in hosts:
             if printHostInformation(host) == 0:
                 a +=1
-                prin("OK")
+                print("OK")
             elif printHostInformation(host) == 1:
                 print("WARNING")
                 b +=1
