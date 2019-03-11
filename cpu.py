@@ -117,15 +117,13 @@ def connect():
 def main():
     arg()
     print(connect())
-    tableau = []
-    tableau = connect()
-    if tableau[3] =! 0:
+    if connect()[3] =! 0:
         sys.exit(CRITICAL)
-    elif tableau[2] =! 0:
+    elif connect()[2] =! 0:
         sys.exit(WARNING)
-    elif tableau[4] =! 0:
+    elif connect()[4] =! 0:
         sys.exit(UNKNOWN)
-    else tableau[1] =! 0:
+    else connect()[1] =! 0:
         sys.exit(OK)
 
 
