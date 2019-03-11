@@ -85,21 +85,27 @@ def connect():
     for i in vms:
         hosts = i.host
         a=0
+        b=0
+        c=0
+        d=0
         for host in hosts:
             print(host.name)
             if printHostInformation(host) == 0:
                 print("OK")
                 #sys.exit(0)
                 a +=1
-                print(a)
+                #print(a)
             elif printHostInformation(host) == 1:
                 print("WARNING")
+                b +=1
             elif printHostInformation(host) == 2:
                 print("CRITICAL")
+                c +=1
             else:
                 print("UNKNOWN")
+                d +=1
 
-    return list
+    return a
 
     Disconnect(c)
 
