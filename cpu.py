@@ -123,14 +123,15 @@ def main():
     print(t[1])
     print(t[2])
     print(t[3])
-    #if connect().index(1) != 0:
-    #    sys.exit(CRITICAL)
-    #elif t[2] != 0:
-    #    sys.exit(WARNING)
-    #elif t[4] != 0:
-    #    sys.exit(UNKNOWN)
-    #else t[1] != 0:
-    #    sys.exit(OK)
+
+    if  t[2] != 0:
+        sys.exit(CRITICAL)
+    elif t[1] != 0:
+        sys.exit(WARNING)
+    elif t[3] != 0:
+        sys.exit(UNKNOWN)
+    else t[0] != 0:
+        sys.exit(OK)
 
 
 if __name__ == '__main__':
