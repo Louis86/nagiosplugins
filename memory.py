@@ -9,6 +9,8 @@ import logging
 import os, sys
 
 
+MBFACTOR = float(1 << 20)
+
 OK       = 0
 WARNING  = 1
 CRITICAL = 2
