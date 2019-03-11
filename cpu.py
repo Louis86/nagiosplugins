@@ -75,6 +75,7 @@ def connect():
         for host in hosts:
             if printHostInformation(host) == 0:
                 a +=1
+                prin("OK")
             elif printHostInformation(host) == 1:
                 print("WARNING")
                 b +=1
@@ -90,7 +91,6 @@ def connect():
     list.insert(3,c)
     list.insert(4,d)
     return list
-
     Disconnect(c)
 
 
@@ -106,7 +106,6 @@ def main():
         sys.exit(UNKNOWN)
     else:
         sys.exit(OK)
-
 
 if __name__ == '__main__':
     main()
