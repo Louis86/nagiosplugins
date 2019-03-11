@@ -84,13 +84,13 @@ def connect():
 
     for i in vms:
         hosts = i.host
-        a  = 0
+        a=0
         for host in hosts:
             print(host.name)
             if printHostInformation(host) == 0:
                 print("OK")
                 #sys.exit(0)
-                a += a
+                a +=1
                 print(a)
             elif printHostInformation(host) == 1:
                 print("WARNING")
