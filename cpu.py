@@ -91,7 +91,7 @@ def connect():
         for host in hosts:
             print(host.name)
             if printHostInformation(host) == 0:
-                print("OK")
+                #print("OK")
                 #sys.exit(0)
                 a +=1
                 #print(a)
@@ -105,7 +105,7 @@ def connect():
                 print("UNKNOWN")
                 d +=1
 
-    return a
+    return list =[a,b,c,d]
 
     Disconnect(c)
 
