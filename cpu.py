@@ -118,7 +118,7 @@ def main():
     arg()
     print(connect())
     tableau = []
-    tableau = connect()
+    tableau = connect().copy()
     if tableau[3] != 0:
         sys.exit(CRITICAL)
     elif tableau[2] != 0:
