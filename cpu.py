@@ -117,15 +117,15 @@ def connect():
 def main():
     arg()
     print(connect())
-    t = connect().copy()
-    if t[3] != 0:
-        sys.exit(CRITICAL)
-    elif t[2] != 0:
-        sys.exit(WARNING)
-    elif t[4] != 0:
-        sys.exit(UNKNOWN)
-    else t[1] != 0:
-        sys.exit(OK)
+    print(connect.index(1))
+    #if connect().index(1) != 0:
+    #    sys.exit(CRITICAL)
+    #elif t[2] != 0:
+    #    sys.exit(WARNING)
+    #elif t[4] != 0:
+    #    sys.exit(UNKNOWN)
+    #else t[1] != 0:
+    #    sys.exit(OK)
 
 
 if __name__ == '__main__':
