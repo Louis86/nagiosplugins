@@ -9,8 +9,6 @@ import logging
 import os, sys
 
 
-MBFACTOR = float(1 << 20)
-
 OK       = 0
 WARNING  = 1
 CRITICAL = 2
@@ -28,8 +26,6 @@ def printHostInformation(host):
         cpuTotal = cpuHz*cpuCores*cpuPackage*0.000001
         cpuUsage = stats.overallCpuUsage
         cpuPercentage = (cpuUsage/cpuTotal)*100
-
-
 
         if  cpuPercentage < 60:
             return 0
@@ -65,7 +61,6 @@ def connect():
     datacenter = c.content.rootFolder.childEntity[0]
     vms = datacenter.hostFolder.childEntity
     list = []
-
     for i in vms:
         hosts = i.host
         a=0
