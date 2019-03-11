@@ -29,31 +29,15 @@ def printHostInformation(host):
         cpuUsage = stats.overallCpuUsage
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
-            #countOk = 0
-            #countWarning = 0
-            #countCritical = 0
-            #countUnknown = 0
+
 
         if  cpuPercentage < 60:
-            #countOk +=1
-            #sys.exit(OK)
-            #print("OK")
-            #print(cpuPercentage)
             return 0
         elif cpuPercentage >= 60 and cpuPercentage <= 80:
-            #print(cpuPercentage)
-            #countWarning +=1
-            #sys.exit(WARNING)
             return 1
         elif cpuPercentage > 80:
-            #print(cpuPercentage)
-            #coountCritical +=1
-            #sys.exit(CRITICAL)
             return 2
         else:
-            #print(cpuPercentage)
-            #countUnknown +=1
-            #sys.exit(UNKNOWN)
             return 3
     except Exception as error:
         print("Unable to access information for host: ", host.name)
@@ -89,12 +73,8 @@ def connect():
         c=0
         d=0
         for host in hosts:
-            #print(host.name)
             if printHostInformation(host) == 0:
-                #print("OK")
-                #sys.exit(0)
                 a +=1
-                #print(a)
             elif printHostInformation(host) == 1:
                 print("WARNING")
                 b +=1
@@ -116,14 +96,8 @@ def connect():
 
 def main():
     arg()
-    #print(connect())
     t = connect()
     print(t)
-    #print(t[0])
-    #print(t[1])
-    #print(t[2])
-    #print(t[3])
-
     if  t[2] != 0:
         sys.exit(CRITICAL)
     elif t[1] != 0:
