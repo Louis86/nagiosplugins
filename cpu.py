@@ -130,7 +130,7 @@ def main():
         sys.exit(WARNING)
     elif t[3] != 0:
         sys.exit(UNKNOWN)
-    else t[0] != 0:
+    else:
         sys.exit(OK)
 
 
