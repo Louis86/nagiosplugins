@@ -119,10 +119,10 @@ def main():
     #print(connect())
     t = connect()
     print(t)
-    print(t[0])
-    print(t[1])
-    print(t[2])
-    print(t[3])
+    #print(t[0])
+    #print(t[1])
+    #print(t[2])
+    #print(t[3])
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
