@@ -117,8 +117,7 @@ def connect():
 def main():
     arg()
     print(connect())
-    t = []
-    t= connect().copy()
+    t = connect().copy()
     if t[3] != 0:
         sys.exit(CRITICAL)
     elif t[2] != 0:
