@@ -117,7 +117,7 @@ def connect():
 def main():
     arg()
     #print(connect())
-    print(connect().index(1))
+    print(connect().index(a))
     #if connect().index(1) != 0:
     #    sys.exit(CRITICAL)
     #elif t[2] != 0:
