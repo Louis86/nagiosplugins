@@ -89,7 +89,7 @@ def connect():
         c=0
         d=0
         for host in hosts:
-            print(host.name)
+            #print(host.name)
             if printHostInformation(host) == 0:
                 #print("OK")
                 #sys.exit(0)
@@ -116,7 +116,7 @@ def connect():
 
 def main():
     arg()
-    print(connect())
+    #print(connect())
     print(connect().index(1))
     #if connect().index(1) != 0:
     #    sys.exit(CRITICAL)
