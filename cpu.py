@@ -105,7 +105,11 @@ def connect():
                 print("UNKNOWN")
                 d +=1
 
-    return list =[a,b,c,d]
+    list.insert(1,a)
+    list.insert(2,b)
+    list.insert(3,c)
+    list.insert(4,d)
+    return list
 
     Disconnect(c)
 
