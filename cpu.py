@@ -91,7 +91,7 @@ def connect():
                 print("OK")
                 sys.exit(0)
                 a += a
-                list = a
+                print(a)
             elif printHostInformation(host) == 1:
                 print("WARNING")
             elif printHostInformation(host) == 2:
