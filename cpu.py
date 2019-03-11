@@ -89,6 +89,7 @@ def connect():
             print(host.name)
             if printHostInformation(host) == 0:
                 print("OK")
+                sys.exit(0)
                 a += a
                 list = a
             elif printHostInformation(host) == 1:
