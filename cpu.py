@@ -119,6 +119,7 @@ def main():
     #print(connect())
     t = connect()
     print(t)
+    print(t[0])
     #if connect().index(1) != 0:
     #    sys.exit(CRITICAL)
     #elif t[2] != 0:
