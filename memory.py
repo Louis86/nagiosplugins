@@ -83,19 +83,19 @@ def connect():
 
             if  p == 0:
                 listHostOk.append(host)
-                muOk.append(host)
+                muOk.append(mu)
                 a +=1
             elif p == 1:
                 listHostWarning.append(host)
-                muWarning.append(host)
+                muWarning.append(mu)
                 b +=1
             elif p == 2:
                 listHostCritical.append(host)
-                muCritical.append(host)
+                muCritical.append(mu)
                 c +=1
             else:
                 listHostUnknown.append(host)
-                muUnknown.append(host)
+                muUnknown.append(mu)
                 d +=1
 
     list.insert(1,a)
