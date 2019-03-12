@@ -73,19 +73,19 @@ def connect():
         d=0
         for host in hosts:
             if printHostInformation(host) == 0:
-                listHostOk.insert(host)
+                listHostOk.insert(i.host)
                 a +=1
 
             elif printHostInformation(host) == 1:
-                listHostWarning.insert(host)
+                listHostWarning.insert(i.host)
                 b +=1
 
             elif printHostInformation(host) == 2:
-                listHostCritical.insert(host)
+                listHostCritical.insert(i.host)
                 c +=1
 
             else:
-                listHostUnknown(host)
+                listHostUnknown(i.host)
                 d +=1
 
     list.insert(1,a)
@@ -103,7 +103,7 @@ def main():
     print("liste Machine Warning",lWarning)
     print("liste Machine Critical",lCritical)
     print("liste Machine Unknown", lUnknown)
-    
+
     if  t[2] != 0:
         sys.exit(CRITICAL)
     elif t[1] != 0:
