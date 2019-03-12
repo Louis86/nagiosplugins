@@ -98,11 +98,25 @@ def connect():
 
 def main():
     arg()
+
     t, lOk, lWarning, lCritical, lUnknown  = connect()
-    print("liste Machine Ok",lOk)
-    print("liste Machine Warning",lWarning)
-    print("liste Machine Critical",lCritical)
-    print("liste Machine Unknown", lUnknown)
+
+    print("liste Machine Ok")
+            for x in range(len(lOk)):
+                print(lOk[x],"\n")
+
+
+    print("liste Machine Warning")
+            for n in range(len(lWarning)):
+                print(lWarning[n],"\n")
+
+    print("liste Machine Critical")
+            for o in range(len(lCritical)):
+                print(lCritical[o],"\n")
+
+    print("liste Machine Unknown")
+            for o in range(len(lUnknown)):
+                print(lUnknown[p],"\n")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
