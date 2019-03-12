@@ -132,7 +132,7 @@ def main():
 
     print("memoire utilisé")
     for h in range(len(mC)):
-        print(mW[h])
+        print(mC[h])
 
 
     print("\n liste Machine Unknown")
