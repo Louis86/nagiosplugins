@@ -113,7 +113,6 @@ def main():
     for p in range(len(lUnknown)):
         print(lUnknown[p],"\n")
 
-    print(t)
     if  t[2] != 0:
         sys.exit(CRITICAL)
     elif t[1] != 0:
