@@ -111,31 +111,31 @@ def main():
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
     print("liste Machine Ok")
     for x in range(len(lOk)):
-        print(lOk[x],"\t")
+        print(lOk[x])
 
     print("memoire utilisé")
     for f in range(len(mO)):
         print(mO[f],"\n")
 
-    print("liste Machine Warning")
+    print("\n liste Machine Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n],"\t")
+        print(lWarning[n])
 
     print("memoire utilisé")
     for g in range(len(mW)):
-        print(mW[g],"\n")
+        print(mW[g],)
 
 
-    print("liste Machine Critical")
+    print("\n liste Machine Critical")
     for o in range(len(lCritical)):
         print(lCritical[o],"\t")
 
     print("memoire utilisé")
     for h in range(len(mC)):
-        print(mW[h],"\n")
+        print(mW[h])
 
 
-    print("liste Machine Unknown")
+    print("\n liste Machine Unknown")
     for p in range(len(lUnknown)):
         print(lUnknown[p],"\t")
 
