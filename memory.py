@@ -113,35 +113,22 @@ def main():
     for x in range(len(lOk)) :
         print(lOk[x],"mémoire utilisée \t",mO[x])
 
-    print("memoire utilisé")
-    for f in range(len(mO)):
-        print(mO[f],"\n")
 
     print("\n liste Machine Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n])
+        print(lWarning[n],"mémoire utilisée \t",mW[n])
 
-    print("memoire utilisé")
-    for g in range(len(mW)):
-        print(mW[g],)
 
 
     print("\n liste Machine Critical")
     for o in range(len(lCritical)):
-        print(lCritical[o],"\t")
-
-    print("memoire utilisé")
-    for h in range(len(mC)):
-        print(mC[h])
+        print(lCritical[o],"mémoire utilisée \t",mC[o])
 
 
     print("\n liste Machine Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"\t")
+        print(lUnknown[p],"mémoire utilisée \t",mU[x])
 
-    print("memoire utilisé")
-    for i in range(len(mU)):
-        print(mU[i],"\n")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
