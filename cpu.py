@@ -28,13 +28,13 @@ def printHostInformation(host):
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
         if  cpuPercentage < 60:
-            return 0
+            return 0, cpuPercentage
         elif cpuPercentage >= 60 and cpuPercentage <= 80:
-            return 1
+            return 1, cpuPercentage
         elif cpuPercentage > 80:
-            return 2
+            return 2 ,cpuPercentage
         else:
-            return 3
+            return 3,cpuPercentage
     except Exception as error:
         print("Unable to access information for host: ", host.name)
         print(error)
@@ -65,6 +65,10 @@ def connect():
     listHostWarning = []
     listHostCritical = []
     listHostUnknown = []
+    cpuOk = []
+    cpuWarning = []
+    cpuCritical = []
+    cpuUnknown = []
     for i in vms:
         hosts = i.host
         a=0
@@ -72,51 +76,59 @@ def connect():
         c=0
         d=0
         for host in hosts:
-            if printHostInformation(host) == 0:
+            p, cpu = printHostInformation(host)
+            if p == 0:
                 listHostOk.append(host)
+                cpuOk.append(cpu)
                 a +=1
 
-            elif printHostInformation(host) == 1:
+            elif p == 1:
                 listHostWarning.append(host)
+                cpuWarning.append(cpu)
                 b +=1
 
-            elif printHostInformation(host) == 2:
+            elif p == 2:
                 listHostCritical.append(host)
                 c +=1
 
             else:
                 listHostUnknown.append(host)
+                cpuUnknown.append(cpu)
                 d +=1
 
     list.insert(1,a)
     list.insert(2,b)
     list.insert(3,c)
     list.insert(4,d)
-    return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown
+    return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown, cpuOk, cpuWarning, cpuCritical, cpuUnknown
     Disconnect(c)
 
 
 def main():
     arg()
 
-    t, lOk, lWarning, lCritical, lUnknown  = connect()
+    t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
+    print("Nombre de Machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
     print("liste Machine Ok")
-    for x in range(len(lOk)):
-        print(lOk[x],"\n")
+    for x in range(len(lOk)) :
+        print(lOk[x],"CPU utilisée \t",cO[x],"%")
 
 
-    print("liste Machine Warning")
+    print("\n liste Machine Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n],"\n")
+        print(lWarning[n],"mémoire utilisée \t",cW[n],"%")
 
-    print("liste Machine Critical")
+
+
+    print("\n liste Machine Critical")
     for o in range(len(lCritical)):
-        print(lCritical[o],"\n")
+        print(lCritical[o],"CPU  utilisée \t",cC[o],"%")
 
-    print("liste Machine Unknown")
+
+    print("\n liste Machine Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"\n")
+        print(lUnknown[p],"CPU  utilisée \t",cU[x],"%")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
