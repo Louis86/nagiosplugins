@@ -28,17 +28,17 @@ def printHostInformation(host):
                 (float(memoryUsage) / memoryCapacityInMB) * 100
             )
         if  memoryUsage < 60:
-            return 0
+            return 0, memoryUsage
         elif memoryUsage >= 60 and memoryUsage <= 80:
-            return 1
+            return 1, memoryUsage
         elif memoryUsage > 80:
-            return 2
+            return 2, memoryUsage
         else:
-            return 3
+            return 3, memoryUsage
     except Exception as error:
         print("Unable to access information for host: ", host.name)
         print(error)
-        return none
+        return none, none
         pass
 
 def arg():
@@ -65,6 +65,13 @@ def connect():
     listHostWarning = []
     listHostCritical = []
     listHostUnknown = []
+
+
+    muOk = []
+    muWarning = []
+    muCritical = []
+    muUnknown = []
+
     for i in vms:
         hosts = i.host
         a=0
@@ -72,46 +79,69 @@ def connect():
         c=0
         d=0
         for host in hosts:
-            if printHostInformation(host) == 0:
+            p, mu = printHostInformation(host)
+
+            if  p == 0:
                 listHostOk.append(host)
+                muOk.append(host)
                 a +=1
-            elif printHostInformation(host) == 1:
+            elif p == 1:
                 listHostWarning.append(host)
+                muWarning.append(host)
                 b +=1
-            elif printHostInformation(host) == 2:
+            elif p == 2:
                 listHostCritical.append(host)
+                muCritical.append(host)
                 c +=1
             else:
                 listHostUnknown.append(host)
+                muUnknown.append(host)
                 d +=1
 
     list.insert(1,a)
     list.insert(2,b)
     list.insert(3,c)
     list.insert(4,d)
-    return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown
+    return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown, muOk, muWarning, muCritical, muUnknown
     Disconnect(c)
 
 
 def main():
     arg()
-    t, lOk, lWarning, lCritical, lUnknown  = connect()
+    t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
     print("liste Machine Ok")
     for x in range(len(lOk)):
-        print(lOk[x],"\n")
+        print(lOk[x],"\t")
 
+    print("memoire utilisé")
+    for f in range(len(mO)):
+        print(mO[f],"\n")
 
     print("liste Machine Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n],"\n")
+        print(lWarning[n],"\t")
+
+    print("memoire utilisé")
+    for g in range(len(mW)):
+        print(mW[g],"\n")
+
 
     print("liste Machine Critical")
     for o in range(len(lCritical)):
-        print(lCritical[o],"\n")
+        print(lCritical[o],"\t")
+
+    print("memoire utilisé")
+    for h in range(len(mC)):
+        print(mW[h],"\n")
+
 
     print("liste Machine Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"\n")
+        print(lUnknown[p],"\t")
+
+    print("memoire utilisé")
+    for i in range(len(mU)):
+        print(mU[i],"\n")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
