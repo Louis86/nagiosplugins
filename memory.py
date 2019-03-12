@@ -61,6 +61,10 @@ def connect():
     datacenter = c.content.rootFolder.childEntity[0]
     vms = datacenter.hostFolder.childEntity
     list = []
+    listHostOk = []
+    listHostWarning = []
+    listHostCritical = []
+    listHostUnknown = []
     for i in vms:
         hosts = i.host
         a=0
@@ -69,29 +73,46 @@ def connect():
         d=0
         for host in hosts:
             if printHostInformation(host) == 0:
+                listHostOk.append(host)
                 a +=1
-                print("OK")
             elif printHostInformation(host) == 1:
-                print("WARNING")
+                listHostWarning.append(host)
                 b +=1
             elif printHostInformation(host) == 2:
-                print("CRITICAL")
+                listHostCritical.append(host)
                 c +=1
             else:
-                print("UNKNOWN")
+                listHostUnknown.append(host)
                 d +=1
 
     list.insert(1,a)
     list.insert(2,b)
     list.insert(3,c)
     list.insert(4,d)
-    return list
+    return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown
     Disconnect(c)
 
 
 def main():
     arg()
-    t = connect()
+    t, lOk, lWarning, lCritical, lUnknown  = connect()
+    print("liste Machine Ok")
+    for x in range(len(lOk)):
+        print(lOk[x],"\n")
+
+
+    print("liste Machine Warning")
+    for n in range(len(lWarning)):
+        print(lWarning[n],"\n")
+
+    print("liste Machine Critical")
+    for o in range(len(lCritical)):
+        print(lCritical[o],"\n")
+
+    print("liste Machine Unknown")
+    for p in range(len(lUnknown)):
+        print(lUnknown[p],"\n")
+
     print(t)
     if  t[2] != 0:
         sys.exit(CRITICAL)
