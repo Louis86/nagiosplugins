@@ -52,10 +52,10 @@ def connect():
     s.verify_mode = ssl.CERT_NONE
     try:
         c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
-        print('Valid certificate')
+        #print('Valid certificate')
     except:
         c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
-        print('Invalid or untrusted certificate')
+        #print('Invalid or untrusted certificate')
 
 
     datacenter = c.content.rootFolder.childEntity[0]
