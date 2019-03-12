@@ -110,8 +110,8 @@ def main():
     arg()
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
     print("liste Machine Ok")
-    for x in range(len(lOk)):
-        print(lOk[x])
+    for x in range(len(lOk)), range(len(mO)) :
+        print(lOk[x],"mémoire utilisée \t", mO[x])
 
     print("memoire utilisé")
     for f in range(len(mO)):
