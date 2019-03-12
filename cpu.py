@@ -73,19 +73,19 @@ def connect():
         d=0
         for host in hosts:
             if printHostInformation(host) == 0:
-                listHostOk.insert(i.host)
+                listHostOk.append(host)
                 a +=1
 
             elif printHostInformation(host) == 1:
-                listHostWarning.insert(i.host)
+                listHostWarning.append(host)
                 b +=1
 
             elif printHostInformation(host) == 2:
-                listHostCritical.insert(i.host)
+                listHostCritical.append(host)
                 c +=1
 
             else:
-                listHostUnknown(i.host)
+                listHostUnknown.append(host)
                 d +=1
 
     list.insert(1,a)
