@@ -17,7 +17,7 @@ CRITICAL = 2
 UNKNOWN =  3
 
 def printHostInformation(host):
-    o,wmi,wma,c arg()
+    o,wmi,wma,c = arg()
     try:
         summary = host.summary
         stats = summary.quickStats
