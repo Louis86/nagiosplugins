@@ -17,7 +17,7 @@ CRITICAL = 2
 UNKNOWN =  3
 
 def printHostInformation(host):
-    o,wmi,wma,c = arg()
+    h,l,p,pr,o,wmi,wma,c = arg()
     try:
         summary = host.summary
         stats = summary.quickStats
@@ -45,21 +45,26 @@ def printHostInformation(host):
 def arg():
     parser = argparse.ArgumentParser(description="Memoory Check")
     parser = argparse.ArgumentParser(description="Plugin shows the memory state in terms of memory percentage")
+    parser.add_argument('-h',dest="host" ,help="name of host" ,required=True)
+    parser.add_argument('-l',dest="login" ,help="name of login" ,required=True)
+    parser.add_argument('-pw',dest="password" ,help="password" ,required=True)
+    parser.add_argument('-p',dest="protocol" ,help="protocol" ,required=True)
     parser.add_argument('-Ok',dest="memoryOKmax" ,help="percentage Maximum of memory OK : state Ok", type=int ,required=True,choices=range(100))
     parser.add_argument('-wMin',dest="warningMin" ,help="percentage Minimum of memory warning : state warning Minimum", type=int ,required=True,choices=range(100))
     parser.add_argument('-wMax',dest="warningMax" ,help="percentage Maximum of memory : state warning : state warning Maximum", type=int ,required=True,choices=range(100))
     parser.add_argument('-cMin',dest="criticalMin" ,help="percentage Minimum of memory :  state critical", type=int ,required=True,choices=range(100))
     args = parser.parse_args()
-    return args.memoryOKmax, args.warningMin, args.warningMax, args.criticalMin
+    return args.host, args.login, args.password, args.protocol, args.memoryOKmax, args.warningMin, args.warningMax, args.criticalMin
 
 def connect():
-    s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    ho,lo,pw,pr,ok,wmin,wmax,cr : arg()
+    s = ssl.SSLContext(pr)
     s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
+        c = SmartConnect(host=ho, user=lo, pwd=pw)
         #print('Valid certificate')
     except:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
+        c = SmartConnect(host=ho, user=lo, pwd=pw, sslContext=s)
         #print('Invalid or untrusted certificate')
 
 
