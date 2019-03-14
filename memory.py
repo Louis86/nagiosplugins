@@ -115,7 +115,7 @@ def main():
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
 
     print("Computer number",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("liste Machin Ok")
+    print("list Computer Ok")
     for x in range(len(lOk)) :
         print(lOk[x],"RAM memory used \t",mO[x],"%")
 
