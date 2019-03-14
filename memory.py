@@ -114,26 +114,26 @@ def connect():
 def main():
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
 
-    print("Nombre de Machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("liste Machine Ok")
+    print("Computer number",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
+    print("liste Machin Ok")
     for x in range(len(lOk)) :
-        print(lOk[x],"mémoire utilisée \t",mO[x],"%")
+        print(lOk[x],"RAM memory used \t",mO[x],"%")
 
 
-    print("\n liste Machine Warning")
+    print("\n list Computer Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n],"mémoire utilisée \t",mW[n],"%")
+        print(lWarning[n],"RAM memory used \t",mW[n],"%")
 
 
 
-    print("\n liste Machine Critical")
+    print("\n list Computer Critical")
     for o in range(len(lCritical)):
-        print(lCritical[o],"mémoire utilisée \t",mC[o],"%")
+        print(lCritical[o],"RAM memory used \t",mC[o],"%")
 
 
-    print("\n liste Machine Unknown")
+    print("\n list Computer Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"mémoire utilisée \t",mU[x],"%")
+        print(lUnknown[p],"RAM memory used \t",mU[x],"%")
 
 
     if  t[2] != 0:
