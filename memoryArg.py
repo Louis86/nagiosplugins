@@ -3,6 +3,6 @@ parser = argparse.ArgumentParser(description="Plugin shows the memory state in t
 parser.add_argument("-memoryOK", "-W","-C", help="range of memory OK", type=int)
 args = parser.parse_args()
 
-print(args.-memoryOK)
-print(args.-W)
-print(args.-C)
+print(args.memoryOK)
+print(args.W)
+print(args.C)
