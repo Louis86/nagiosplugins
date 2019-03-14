@@ -57,7 +57,7 @@ def arg():
     return args.host, args.login, args.password, args.protocol, args.memoryOKmax, args.warningMin, args.warningMax, args.criticalMin
 
 def connect():
-    ho,lo,pw,pr,ok,wmin,wmax,cr : arg()
+    ho,lo,pw,pr,ok,wmin,wmax,cr = arg()
     s = ssl.SSLContext(pr)
     s.verify_mode = ssl.CERT_NONE
     try:
