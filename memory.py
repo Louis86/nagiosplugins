@@ -17,6 +17,7 @@ CRITICAL = 2
 UNKNOWN =  3
 
 def printHostInformation(host):
+    o,wmi,wma,c arg()
     try:
         summary = host.summary
         stats = summary.quickStats
@@ -27,11 +28,11 @@ def printHostInformation(host):
         freeMemoryPercentage = 100 - (
                 (float(memoryUsage) / memoryCapacityInMB) * 100
             )
-        if  memoryUsage < 60:
+        if  memoryUsage < o:
             return 0, memoryUsage
-        elif memoryUsage >= 60 and memoryUsage <= 80:
+        elif memoryUsage >= wmi and memoryUsage <= wma:
             return 1, memoryUsage
-        elif memoryUsage > 80:
+        elif memoryUsage > c:
             return 2, memoryUsage
         else:
             return 3, memoryUsage
@@ -49,7 +50,7 @@ def arg():
     parser.add_argument('-wMax',dest="warningMax" ,help="percentage Maximum of memory : state warning : state warning Maximum", type=int ,required=True,choices=range(100))
     parser.add_argument('-cMin',dest="criticalMin" ,help="percentage Minimum of memory :  state critical", type=int ,required=True,,choices=range(100))
     args = parser.parse_args()
-    return args
+    return args.memoryOKmax, args.warningMin, args.warningMax, args.criticalMin
 
 def connect():
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
@@ -111,7 +112,6 @@ def connect():
 
 
 def main():
-    arg()
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
 
     print("Nombre de Machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
