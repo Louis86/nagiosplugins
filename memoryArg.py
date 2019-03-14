@@ -8,5 +8,6 @@ parser.add_argument("criticalMin" ,help="range of memory critical Minimum", type
 args = parser.parse_args()
 
 print(args.memoryOK)
-print(args.warning)
+print(args.warningMin)
+print(args.warningMax)
 print(args.critical)
