@@ -7,7 +7,7 @@ parser.add_argument("warningMax" ,help="range of memory warning Maximum", type=i
 parser.add_argument("criticalMin" ,help="range of memory critical Minimum", type=int)
 args = parser.parse_args()
 
-print(args.memoryOK)
+print(args.memoryOKmax)
 print(args.warningMin)
 print(args.warningMax)
 print(args.critical)
