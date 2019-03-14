@@ -1,5 +1,8 @@
 import argparse
 parser = argparse.ArgumentParser(description="Plugin shows the memory state in terms of memory percentage")
-parser.add_argument("memoryOK", help="range of memory OK", type=int)
+parser.add_argument("-memoryOK", "-W","-C", help="range of memory OK", type=int)
 args = parser.parse_args()
-print(args.memoryOK)
+
+print(args.-memoryOK)
+print(args.-W)
+print(args.-C)
