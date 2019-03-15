@@ -47,7 +47,7 @@ def GetArgs():
     parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
     parser.add_argument('-u', '--user', required=True, action='store', help='User name to use when connecting to host')
     parser.add_argument('-p', '--password', required=True, action='store',help='Password to use when connecting to host')
-    parser.add_argument('-w','--warnin' , type=int ,required=True,choices=range(100),help="percentage  of memory warning : state warning ")
+    parser.add_argument('-w','--warning' , type=int ,required=True,choices=range(100),help="percentage  of memory warning : state warning ")
     parser.add_argument('-c','--critical' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory :  state critical")
     args = parser.parse_args()
     return args
