@@ -28,11 +28,11 @@ def printHostInformation(host):
         freeMemoryPercentage = 100 - (
                 (float(memoryUsage) / memoryCapacityInMB) * 100
             )
-        if  memoryUsage < ga.ok:
+        if  memoryUsage < ga.warning:
             return 0, memoryUsage
-        elif memoryUsage >= ga.wmin and memoryUsage <= ga.wmax:
+        elif memoryUsage >= ga.warning and memoryUsage <= ga.critical:
             return 1, memoryUsage
-        elif memoryUsage > ga.cmin:
+        elif memoryUsage > ga.critical:
             return 2, memoryUsage
         else:
             return 3, memoryUsage
@@ -47,10 +47,8 @@ def GetArgs():
     parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
     parser.add_argument('-u', '--user', required=True, action='store', help='User name to use when connecting to host')
     parser.add_argument('-p', '--password', required=True, action='store',help='Password to use when connecting to host')
-    parser.add_argument('-Ok','--ok' , type=int ,required=True,choices=range(100),help="percentage Maximum of memory OK : state Ok")
-    parser.add_argument('-wMin','--wmin' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory warning : state warning Minimum")
-    parser.add_argument('-wMax','--wmax' , type=int ,required=True,choices=range(100),help="percentage Maximum of memory : state warning : state warning Maximum")
-    parser.add_argument('-cMin','--cmin' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory :  state critical")
+    parser.add_argument('-w','--warnin' , type=int ,required=True,choices=range(100),help="percentage  of memory warning : state warning ")
+    parser.add_argument('-c','--critical' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory :  state critical")
     args = parser.parse_args()
     return args
 
