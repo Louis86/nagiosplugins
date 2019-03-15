@@ -43,7 +43,7 @@ def printHostInformation(host):
         pass
 
 def arg():
-    parser = argparse.ArgumentParser(description="Memoory Check")
+    parser = argparse.ArgumentParser(description="Memory Check")
     parser = argparse.ArgumentParser(description="Plugin shows the memory state in terms of memory percentage")
     parser.add_argument('-Ok',dest="memoryOKmax" ,help="percentage Maximum of memory OK : state Ok", type=int ,required=True,choices=range(100))
     parser.add_argument('-wMin',dest="warningMin" ,help="percentage Minimum of memory warning : state warning Minimum", type=int ,required=True,choices=range(100))
