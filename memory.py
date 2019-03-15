@@ -17,7 +17,7 @@ CRITICAL = 2
 UNKNOWN =  3
 
 def printHostInformation(host):
-    o,wmi,wma,c = arg()
+    ga= GetArgs()
     try:
         summary = host.summary
         stats = summary.quickStats
@@ -28,11 +28,11 @@ def printHostInformation(host):
         freeMemoryPercentage = 100 - (
                 (float(memoryUsage) / memoryCapacityInMB) * 100
             )
-        if  memoryUsage < o:
+        if  memoryUsage < ga.ok:
             return 0, memoryUsage
-        elif memoryUsage >= wmi and memoryUsage <= wma:
+        elif memoryUsage >= ga.wmin and memoryUsage <= ga.wmax:
             return 1, memoryUsage
-        elif memoryUsage > c:
+        elif memoryUsage > ga.cmin:
             return 2, memoryUsage
         else:
             return 3, memoryUsage
@@ -42,21 +42,24 @@ def printHostInformation(host):
         return none, none
         pass
 
-def arg():
-    parser = argparse.ArgumentParser(description="Memory Check")
+def GetArgs():
     parser = argparse.ArgumentParser(description="Plugin shows the memory state in terms of memory percentage")
-    parser.add_argument('-Ok',dest="memoryOKmax" ,help="percentage Maximum of memory OK : state Ok", type=int ,required=True,choices=range(100))
-    parser.add_argument('-wMin',dest="warningMin" ,help="percentage Minimum of memory warning : state warning Minimum", type=int ,required=True,choices=range(100))
-    parser.add_argument('-wMax',dest="warningMax" ,help="percentage Maximum of memory : state warning : state warning Maximum", type=int ,required=True,choices=range(100))
-    parser.add_argument('-cMin',dest="criticalMin" ,help="percentage Minimum of memory :  state critical", type=int ,required=True,choices=range(100))
+    parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
+    parser.add_argument('-u', '--user', required=True, action='store', help='User name to use when connecting to host')
+    parser.add_argument('-p', '--password', required=True, action='store',help='Password to use when connecting to host')
+    parser.add_argument('-Ok','--ok' , type=int ,required=True,choices=range(100),help="percentage Maximum of memory OK : state Ok")
+    parser.add_argument('-wMin','--wmin' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory warning : state warning Minimum")
+    parser.add_argument('-wMax','--wmax' , type=int ,required=True,choices=range(100),help="percentage Maximum of memory : state warning : state warning Maximum")
+    parser.add_argument('-cMin','--cmin' , type=int ,required=True,choices=range(100),help="percentage Minimum of memory :  state critical")
     args = parser.parse_args()
-    return args.memoryOKmax, args.warningMin, args.warningMax, args.criticalMin
+    return args
 
 def connect():
+    args = GetArgs()
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
         #print('Valid certificate')
     except:
         c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
