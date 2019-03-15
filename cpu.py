@@ -133,7 +133,7 @@ def main():
 
     print("\n liste Machine Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"CPU  utilisée \t",cU[x],"%")
+        print(lUnknown[p],"CPU  utilisée \t",cU[p],"%")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
