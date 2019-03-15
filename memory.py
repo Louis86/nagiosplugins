@@ -62,7 +62,7 @@ def connect():
         c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
         #print('Valid certificate')
     except:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
         #print('Invalid or untrusted certificate')
 
 
