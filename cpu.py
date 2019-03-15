@@ -15,6 +15,7 @@ CRITICAL = 2
 UNKNOWN =  3
 
 def printHostInformation(host):
+    ga= GetArgs()
     try:
         summary = host.summary
         stats = summary.quickStats
@@ -27,11 +28,11 @@ def printHostInformation(host):
         cpuUsage = stats.overallCpuUsage
         cpuPercentage = (cpuUsage/cpuTotal)*100
 
-        if  cpuPercentage < 60:
+        if  cpuPercentage < ga.warning:
             return 0, cpuPercentage
-        elif cpuPercentage >= 60 and cpuPercentage <= 80:
+        elif cpuPercentage >= ga.warning and cpuPercentage <= ga.critical:
             return 1, cpuPercentage
-        elif cpuPercentage > 80:
+        elif cpuPercentage > ga.critical:
             return 2 ,cpuPercentage
         else:
             return 3,cpuPercentage
@@ -41,20 +42,26 @@ def printHostInformation(host):
         return 4
         pass
 
-def arg():
-    parser = argparse.ArgumentParser(description="CPU Check")
-    parser.add_argument('-cpu', help='percentage cpu usage' ,action="store_true")
+def GetArgs():
+    parser = argparse.ArgumentParser(description="Plugin shows the cpu state in terms of cpu percentage")
+    parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
+    parser.add_argument('-u', '--user', required=True, action='store', help='User name to use when connecting to host')
+    parser.add_argument('-p', '--password', required=True, action='store',help='Password to use when connecting to host')
+    parser.add_argument('-w','--warning' , type=int ,required=True,choices=range(100),help="threshold of cpu warning : state warning ")
+    parser.add_argument('-c','--critical' , type=int ,required=True,choices=range(100),help="threshold of cpu critical:  state critical")
     args = parser.parse_args()
     return args
 
+
 def connect():
+    args = GetArgs()
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT')
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
         #print('Valid certificate')
     except:
-        c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
         #print('Invalid or untrusted certificate')
 
 
