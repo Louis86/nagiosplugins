@@ -112,8 +112,6 @@ def connect():
 
 
 def main():
-    arg()
-
     t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
     print("Nombre de Machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
