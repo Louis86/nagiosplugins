@@ -26,8 +26,8 @@ def printHostInformation(host):
         cpuHz = cpu.hz
         cpuTotal = cpuHz*cpuCores*cpuPackage*0.000001
         cpuUsage = stats.overallCpuUsage
-        cpuPercentage = (cpuUsage/cpuTotal)*100
-
+        f= (cpuUsage/cpuTotal)*100
+        cpuPercentage = round(f,2)
         if  cpuPercentage < ga.warning:
             return 0, cpuPercentage
         elif cpuPercentage >= ga.warning and cpuPercentage <= ga.critical:
