@@ -114,24 +114,24 @@ def connect():
 def main():
     t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
-    print("Number of machin",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("list Machine Ok")
+    print("Number of host",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
+    print("list host Ok")
     for x in range(len(lOk)) :
         print(lOk[x],"CPU used ",cO[x],"%")
 
 
-    print("\n list Machine Warning")
+    print("\n list host Warning")
     for n in range(len(lWarning)):
         print(lWarning[n],"cpu used \t",cW[n],"%")
 
 
 
-    print("\n list Machine Critical")
+    print("\n list host Critical")
     for o in range(len(lCritical)):
         print(lCritical[o],"CPU  used\t",cC[o],"%")
 
 
-    print("\n list Machine Unknown")
+    print("\n list host Unknown")
     for p in range(len(lUnknown)):
         print(lUnknown[p],"CPU  used \t",cU[p],"%")
 

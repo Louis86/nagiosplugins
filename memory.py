@@ -115,24 +115,24 @@ def connect():
 def main():
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
 
-    print("Computer number",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
+    print("Host number",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
     print("list Computer Ok")
     for x in range(len(lOk)) :
         print(lOk[x],"RAM memory used \t",mO[x],"%")
 
 
-    print("\n list Computer Warning")
+    print("\n list host Warning")
     for n in range(len(lWarning)):
         print(lWarning[n],"RAM memory used \t",mW[n],"%")
 
 
 
-    print("\n list Computer Critical")
+    print("\n list host Critical")
     for o in range(len(lCritical)):
         print(lCritical[o],"RAM memory used \t",mC[o],"%")
 
 
-    print("\n list Computer Unknown")
+    print("\n list host Unknown")
     for p in range(len(lUnknown)):
         print(lUnknown[p],"RAM memory used \t",mU[x],"%")
 
