@@ -114,26 +114,26 @@ def connect():
 def main():
     t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
-    print("Nombre de Machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("liste Machine Ok")
+    print("Number of machine",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
+    print("list Machine Ok")
     for x in range(len(lOk)) :
-        print(lOk[x],"CPU utilisée ",cO[x],"%")
+        print(lOk[x],"CPU used ",cO[x],"%")
 
 
-    print("\n liste Machine Warning")
+    print("\n list Machine Warning")
     for n in range(len(lWarning)):
-        print(lWarning[n],"mémoire utilisée \t",cW[n],"%")
+        print(lWarning[n],"cpu used \t",cW[n],"%")
 
 
 
-    print("\n liste Machine Critical")
+    print("\n list Machine Critical")
     for o in range(len(lCritical)):
-        print(lCritical[o],"CPU  utilisée \t",cC[o],"%")
+        print(lCritical[o],"CPU  used\t",cC[o],"%")
 
 
-    print("\n liste Machine Unknown")
+    print("\n list Machine Unknown")
     for p in range(len(lUnknown)):
-        print(lUnknown[p],"CPU  utilisée \t",cU[p],"%")
+        print(lUnknown[p],"CPU  used \t",cU[p],"%")
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
