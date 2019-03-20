@@ -14,6 +14,8 @@ WARNING  = 1
 CRITICAL = 2
 UNKNOWN =  3
 
+#function which conncect to host and check the cpu usage after return two values : number and percentage cpu used
+#number 0 if 0K , 1 if warning , 2 if critical and 3 unknown
 def printHostInformation(host):
     ga= GetArgs()
     try:
@@ -42,6 +44,9 @@ def printHostInformation(host):
         return 4
         pass
 
+
+# Receive and verifies arguments
+#
 def GetArgs():
     parser = argparse.ArgumentParser(description="Plugin shows the cpu state in terms of cpu percentage")
     parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
@@ -52,7 +57,7 @@ def GetArgs():
     args = parser.parse_args()
     return args
 
-
+#Connect to server and check all the hosts return list of Host and their state : Ok , warning , critical, unknown and the cpu usage for each state
 def connect():
     args = GetArgs()
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
@@ -110,7 +115,9 @@ def connect():
     return list, listHostOk, listHostWarning, listHostCritical, listHostUnknown, cpuOk, cpuWarning, cpuCritical, cpuUnknown
     Disconnect(c)
 
-
+#main function to print all host in the server
+#for each state of host  print the name of host and cpu usage
+#return number in system.exit
 def main():
     t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
