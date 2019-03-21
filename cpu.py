@@ -64,10 +64,9 @@ def connect():
     #s.verify_mode = ssl.CERT_NONE
     try:
         c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
-        #print('Valid certificate')
-    except:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
-        #print('Invalid or untrusted certificate')
+
+    except IOError as e:
+        print("Could not connect to cluster" + str(e))
 
 
     datacenter = c.content.rootFolder.childEntity[0]
