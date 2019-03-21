@@ -63,10 +63,10 @@ def connect():
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password, s)
         #print('Valid certificate')
     except:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password, s)
         #print('Invalid or untrusted certificate')
 
 
