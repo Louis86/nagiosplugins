@@ -122,9 +122,10 @@ def main():
     t, lOk, lWarning, lCritical, lUnknown, cO, cW, cC, cU = connect()
 
     print("Number of host",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("list host Ok")
-    for x in range(len(lOk)) :
-        print(lOk[x],"CPU used ",cO[x],"%")
+
+    print("\n list host Critical")
+    for k in range(len(lCritical)):
+        print(lCritical[k],"CPU  used\t",cC[k],"%")
 
 
     print("\n list host Warning")
@@ -132,15 +133,14 @@ def main():
         print(lWarning[n],"cpu used \t",cW[n],"%")
 
 
-
-    print("\n list host Critical")
-    for k in range(len(lCritical)):
-        print(lCritical[k],"CPU  used\t",cC[k],"%")
-
-
     print("\n list host Unknown")
     for p in range(len(lUnknown)):
         print(lUnknown[p],"CPU  used \t",cU[p],"%")
+
+    print("list host Ok")
+    for x in range(len(lOk)) :
+        print(lOk[x],"CPU used ",cO[x],"%")
+
 
     if  t[2] != 0:
         sys.exit(CRITICAL)
