@@ -9,6 +9,7 @@ MBFACTOR = float(1 << 20)
 
 def printHostInformation(host):
     try:
+        hi = host.info
         summary = host.summary
         stats = summary.quickStats
         hardware = host.hardware
@@ -27,6 +28,7 @@ def printHostInformation(host):
         )
         print("------------------------------------------------")
         print("Host name: ", host.name)
+        print("Host name: ", hi)
         print("NumCPU", cpu)
         print("cpu Package", cpuPackage)
         print("cpu cores", cpuCores)
