@@ -134,8 +134,8 @@ def main():
 
 
     print("\n list host Critical")
-    for o in range(len(lCritical)):
-        print(lCritical[o],"CPU  used\t",cC[o],"%")
+    for k in range(len(lCritical)):
+        print(lCritical[k],"CPU  used\t",cC[k],"%")
 
 
     print("\n list host Unknown")
