@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
