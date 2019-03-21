@@ -23,6 +23,7 @@ def printHostInformation(host):
         summary = host.summary
         stats = summary.quickStats
         hardware = host.hardware
+        hi = host.info
         memoryCapacity = hardware.memorySize
         memoryCapacityInMB = hardware.memorySize/MBFACTOR
         a = (float(stats.overallMemoryUsage) / memoryCapacityInMB)*100
