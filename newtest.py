@@ -11,7 +11,6 @@ def printHostInformation(host):
     try:
         summary = host.summary
         stats = summary.quickStats
-        storage = stats.storage
         hardware = host.hardware
         cpu = hardware.cpuInfo
         cpuPackage = cpu.numCpuPackages
@@ -29,7 +28,6 @@ def printHostInformation(host):
         print("------------------------------------------------")
         print("Host name: ", host.name)
         print("Hardware",hardware)
-        print("Storage :", storage)
         print("NumCPU", cpu)
         print("cpu Package", cpuPackage)
         print("cpu cores", cpuCores)
