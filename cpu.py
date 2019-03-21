@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 from pyVim.connect import SmartConnect, Disconnect
 from pyVmomi import vim
 import ssl
@@ -49,7 +49,7 @@ def printHostInformation(host):
 #
 def GetArgs():
     parser = argparse.ArgumentParser(description="Plugin shows the cpu state in terms of cpu percentage")
-    parser.add_argument('-s', '--host', required=True, action='store', help='Remote host to connect to')
+    parser.add_argument('-H', '--host', required=True, action='store', help='Remote host to connect to')
     parser.add_argument('-u', '--user', required=True, action='store', help='User name to use when connecting to host')
     parser.add_argument('-p', '--password', required=True, action='store',help='Password to use when connecting to host')
     parser.add_argument('-w','--warning' , type=int ,required=True,choices=range(100),help="threshold of cpu warning : state warning ")
