@@ -101,6 +101,7 @@ def connect():
 
             elif p == 2:
                 listHostCritical.append(host)
+                cpuCritical.append(cpu)
                 c +=1
 
             else:
