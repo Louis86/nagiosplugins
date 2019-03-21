@@ -63,10 +63,10 @@ def connect():
     s.verify_mode = ssl.CERT_NONE
     try:
         c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
-        #print('Valid certificate')
-    except:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
-        #print('Invalid or untrusted certificate')
+
+    except IOError as e:
+        print("Could not connect to cluster" + str(e))
+
 
 
     datacenter = c.content.rootFolder.childEntity[0]
@@ -122,25 +122,24 @@ def main():
     t, lOk, lWarning, lCritical, lUnknown, mO, mW, mC, mU  = connect()
 
     print("Host number",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
-    print("list host Ok")
-    for x in range(len(lOk)) :
-        print(lOk[x],"RAM memory used \t",mO[x],"%")
 
+    print("\n list host Critical")
+    for o in range(len(lCritical)):
+        print(lCritical[o],"RAM memory used \t",mC[o],"%")
 
     print("\n list host Warning")
     for n in range(len(lWarning)):
         print(lWarning[n],"RAM memory used \t",mW[n],"%")
 
 
-
-    print("\n list host Critical")
-    for o in range(len(lCritical)):
-        print(lCritical[o],"RAM memory used \t",mC[o],"%")
-
-
     print("\n list host Unknown")
     for p in range(len(lUnknown)):
         print(lUnknown[p],"RAM memory used \t",mU[x],"%")
+
+
+    print("list host Ok")
+    for x in range(len(lOk)) :
+        print(lOk[x],"RAM memory used \t",mO[x],"%")
 
 
     if  t[2] != 0:
