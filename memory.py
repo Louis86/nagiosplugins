@@ -137,7 +137,7 @@ def main():
         print(lUnknown[p],"RAM memory used \t",mU[x],"%")
 
 
-    print("list host Ok")
+    print("\nlist host Ok")
     for x in range(len(lOk)) :
         print(lOk[x],"RAM memory used \t",mO[x],"%")
 

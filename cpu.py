@@ -137,7 +137,7 @@ def main():
     for p in range(len(lUnknown)):
         print(lUnknown[p],"CPU  used \t",cU[p],"%")
 
-    print("list host Ok")
+    print("\n list host Ok")
     for x in range(len(lOk)) :
         print(lOk[x],"CPU used ",cO[x],"%")
 
