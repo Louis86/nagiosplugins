@@ -28,6 +28,7 @@ def printHostInformation(host):
         )
         print("------------------------------------------------")
         print("Host name: ", host.name)
+        print("Hardware",hardware)
         print("Storage :", storage)
         print("NumCPU", cpu)
         print("cpu Package", cpuPackage)
