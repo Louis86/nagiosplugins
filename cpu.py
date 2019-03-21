@@ -60,10 +60,10 @@ def GetArgs():
 #Connect to server and check all the hosts return list of Host and their state : Ok , warning , critical, unknown and the cpu usage for each state
 def connect():
     args = GetArgs()
-    #s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    #s.verify_mode = ssl.CERT_NONE
+    s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password, sslContext=s)
 
     except IOError as e:
         print("Could not connect to cluster" + str(e))
