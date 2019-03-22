@@ -6,9 +6,13 @@ import ssl
 def informationStorage(storage):
     try:
         summary = storage.summary
-        fs    = summary.freeSpace
+        fs    = summary.freeSpace/1000000000
+        sc = summary.capacity/1000000000
+        pourcentage = (fs/sc)*100
         print("------------------------------------------------")
-        print("freeSpace: ",fs/1000000000 , "GB")
+        print("freeSpace: ",fs , "GB")
+        print("Space totale",sc , "GB")
+        print("percentage used", pourcentage)
         print("--------------------------------------------------")
     except Exception as error:
         print("Unable to access information for host: ")
