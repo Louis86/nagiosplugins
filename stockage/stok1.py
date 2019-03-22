@@ -129,6 +129,8 @@ def main():
     print("\n list storage Critical")
     for k in range(len(lCritical)):
         print(sC[k],"GB free and storage  used\t",fC[k],"%")
+
+
     print("\n list storage Warning")
     for n in range(len(lWarning)):
         print(sW[n],"GB free and storage  used\t",fW[n],"%")
