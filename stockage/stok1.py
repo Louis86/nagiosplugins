@@ -12,7 +12,7 @@ def informationStorage(storage):
         print("------------------------------------------------")
         print("freeSpace: ",fs , "GB")
         print("Space totale",sc , "GB")
-        print("percentage used", pourcentage)
+        print("percentage used",round(pourcentage, 2) ,"%")
         print("--------------------------------------------------")
     except Exception as error:
         print("Unable to access information for host: ")
