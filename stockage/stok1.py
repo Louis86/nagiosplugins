@@ -6,8 +6,8 @@ import ssl
 def informationStorage(storage):
     try:
         summary = storage.summary
-        fs    = summary.freeSpace/1000000000
-        sc = summary.capacity/1000000000
+        fs    = float(summary.freeSpace/1000000000)
+        sc = float(summary.capacity/1000000000)
         pourcentage = (fs/sc)*100
         print("------------------------------------------------")
         print("freeSpace: ",fs , "GB")
