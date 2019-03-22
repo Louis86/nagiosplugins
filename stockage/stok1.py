@@ -16,6 +16,7 @@ UNKNOWN =  3
 
 
 def informationStorage(storage):
+    ga= GetArgs()
     try:
         summary = storage.summary
         fs    = round(float(summary.freeSpace/1000000000), 2)
