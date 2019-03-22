@@ -20,9 +20,9 @@ except:
 
 
 datacenter = c.content.rootFolder.childEntity[0]
-vms = datacenter.datastore.childEntity
+vms = datacenter.datastore
 #Iterating each vm object and printing its name
 for i in vms:
     print(i.name)
-    
+
 Disconnect(c)
