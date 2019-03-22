@@ -5,8 +5,7 @@ import ssl
 
 def informationStorage(storage):
     try:
-        summary = storage.summary
-        sg = summary.storage
+        sg = storage.freeSpace
 
         print("------------------------------------------------")
         print("Host name: ", sg)
