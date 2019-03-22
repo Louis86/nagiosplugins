@@ -4,13 +4,6 @@ import ssl
 #import humanize
 
 
-# Method that populates objects of type vimtype
-def get_all_objs(content, vimtype):
-        obj = {}
-        container = content.viewManager.CreateContainerView(content.rootFolder, vimtype, True)
-        for managed_object_ref in container.view:
-                obj.update({managed_object_ref: managed_object_ref.name})
-        return obj
 
 
 
@@ -24,12 +17,11 @@ except:
     c = SmartConnect(host="pcc-5-196-231-40.ovh.com", user="louisilogs", pwd='R1hi7YqT', sslContext=s)
     print('Invalid or untrusted certificate')
 
-#Calling above method
-getAllVms=get_all_objs(c, [vim.VirtualMachine])
 
 
+datacenter = c.content.rootFolder.childEntity[1]
+vms = datacenter.hostFolder.childEntity
 #Iterating each vm object and printing its name
-for vm in getAllVms:
-        print vm.name
-
+for i in vms:
+    print(i.name)
 Disconnect(c)
