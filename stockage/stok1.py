@@ -4,17 +4,17 @@ import ssl
 #import humanize
 
 def informationStorage(storage):
-try:
-    summary = storage.summary
-    sg = summary.STORAGE
+    try:
+        summary = storage.summary
+        sg = summary.STORAGE
 
-    print("------------------------------------------------")
-    print("Host name: ", sg)
-    print("--------------------------------------------------")
-except Exception as error:
-    print("Unable to access information for host: ")
-    print(error)
-    pass
+        print("------------------------------------------------")
+        print("Host name: ", sg)
+        print("--------------------------------------------------")
+    except Exception as error:
+        print("Unable to access information for host: ")
+        print(error)
+        pass
 
 
 
