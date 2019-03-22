@@ -3,7 +3,18 @@ from pyVmomi import vim
 import ssl
 #import humanize
 
+def informationStorage(storage):
+try:
+    summary = storage.summary
+    sg = summary.STORAGE
 
+    print("------------------------------------------------")
+    print("Host name: ", sg)
+    print("--------------------------------------------------")
+except Exception as error:
+    print("Unable to access information for host: ")
+    print(error)
+    pass
 
 
 
@@ -24,4 +35,5 @@ ds = datacenter.datastore
 #Iterating each vm object and printing its name
 for i in ds:
     print(i.name)
+    informationStorage(i)
 Disconnect(c)
