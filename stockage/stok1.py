@@ -8,7 +8,7 @@ def informationStorage(storage):
         summary = storage.summary
         fs    = summary.freeSpace
         print("------------------------------------------------")
-        print("freeSpace: ", fs/1000000000 , "GB")
+        print("freeSpace: ", D(fs/1000000000) , "GB")
         print("--------------------------------------------------")
     except Exception as error:
         print("Unable to access information for host: ")
