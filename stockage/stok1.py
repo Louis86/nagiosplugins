@@ -116,3 +116,41 @@ def connect():
     return list, listStorageOk, listStorageWarning, listStorageCritical, listStorageUnknown, StorageOk, StorageWarning, StorageCritical, StorageUnknown, freeStorageOk, freeStorageWarning , freeStorageCritical, freeStorageUnknown
 
     Disconnect(c)
+
+
+#main function to print all Storage in the server
+#for each state of host  print the name of host and cpu usage
+#return number in system.exit
+def main():
+    t, lOk, lWarning, lCritical, lUnknown, sO, sW, sC, sU, fO, fW, fC, fU = connect()
+
+    print("Number of storage",len(lOk)+len(lWarning)+len(lCritical)+len(lUnknown), "OK:",len(lOk), "WARNING:",len(lWarning), "CRITICAL :",len(lCritical),"UNKNOWN :",len(lUnknown),"\n")
+
+    print("\n list storage Critical")
+    for k in range(len(lCritical)):
+        print(sC[k],"GB free and storage  used\t",fC[k],"%")
+    print("\n list storage Warning")
+    for n in range(len(lWarning)):
+        print(sW[n],"GB free and storage  used\t",fW[n],"%")
+
+
+    print("\n list storage Unknown")
+    for p in range(len(lUnknown)):
+        print(sU[p],"GB free and storage  used\t",fU[p],"%")
+
+    print("\n list storage Ok")
+    for x in range(len(lOk)) :
+        print(sO[x],"GB free and storage  used\t",fO[x],"%")
+
+
+    if  t[2] != 0:
+        sys.exit(CRITICAL)
+    elif t[1] != 0:
+        sys.exit(WARNING)
+    elif t[3] != 0:
+        sys.exit(UNKNOWN)
+    else:
+        sys.exit(OK)
+
+if __name__ == '__main__':
+    main()
