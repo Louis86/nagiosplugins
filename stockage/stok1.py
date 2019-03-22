@@ -6,9 +6,9 @@ import ssl
 def informationStorage(storage):
     try:
         summary = storage.summary
-
+        fs    = summary.freeSpace
         print("------------------------------------------------")
-        print("Host name: ", summary)
+        print("freeSpace: ", fs)
         print("--------------------------------------------------")
     except Exception as error:
         print("Unable to access information for host: ")
