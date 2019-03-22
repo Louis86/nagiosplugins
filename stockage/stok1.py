@@ -24,5 +24,7 @@ vms = datacenter.datastore
 #Iterating each vm object and printing its name
 for i in vms:
     print(i.name)
-
+    hosts = i.host
+    for host in hosts:
+        print(host.name)
 Disconnect(c)
