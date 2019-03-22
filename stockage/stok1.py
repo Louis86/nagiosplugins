@@ -8,11 +8,11 @@ def informationStorage(storage):
         summary = storage.summary
         fs    = float(summary.freeSpace/1000000000)
         sc = float(summary.capacity/1000000000)
-        pourcentage = (fs/sc)*100
+        pourcentage =round( (fs/sc)*100, 2)
         print("------------------------------------------------")
         print("freeSpace: ",fs , "GB")
         print("Space totale",sc , "GB")
-        print("percentage used",round(pourcentage, 2) ,"%")
+        print("percentage used",pourcentage ,"%")
         print("--------------------------------------------------")
     except Exception as error:
         print("Unable to access information for host: ")
