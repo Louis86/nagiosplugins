@@ -85,7 +85,7 @@ def connect():
         print(i.name)
         nbr, percent, freeS = informationStorage(i)
         if nbr == 0:
-            listStoragOk.append(i)
+            listStorageOk.append(i)
             freeStorageOk.append(freeS)
             StorageOk.append(percent)
             a +=1
@@ -93,18 +93,26 @@ def connect():
         elif nbr == 1:
             listStorageWarning.append(i)
             freeStorageWarning.append(freeS)
-            StorageOk.append(percent)
+            StorageWarning.append(percent)
             b +=1
 
         elif nbr == 2:
             listStoragCritical.append(i)
             freeStorageCritical.append(freeS)
-            StorageOk.append(percent)
+            StorageCritical.append(percent)
             c +=1
 
         else:
             listStoragUnknown.append(i)
             freeStorageUnknown.append(freeS)
-            StorageOk.append(percent)
+            StorageUnknown.append(percent)
             d +=1
+
+    list.insert(1,a)
+    list.insert(2,b)
+    list.insert(3,c)
+    list.insert(4,d)
+
+    return list, listStorageOk, listStorageWarning, listStorageCritical, listStorageUnknown, StorageOk, StorageWarning, StorageCritical, StorageUnknown, freeStorageOk, freeStorageWarning , freeStorageCritical, freeStorageUnknown
+
     Disconnect(c)
