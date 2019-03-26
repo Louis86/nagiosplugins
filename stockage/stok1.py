@@ -19,8 +19,8 @@ def informationStorage(storage):
     ga= GetArgs()
     try:
         summary = storage.summary
-        fs    = round(float(summary.freeSpace/1000000000), 2)
-        sc = round(float(summary.capacity/1000000000), 2)
+        fs    = round(float(summary.freeSpace))
+        sc = round(float(summary.capacity))
         percentage =round( (fs/sc)*100, 2)
         if  percentage < ga.warning:
             return 0, percentage , fs
