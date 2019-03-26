@@ -84,7 +84,7 @@ def connect():
     d=0
 
     for i in ds:
-        #print(i.name)
+        print(i.name)
         nbr, percent, freeS = informationStorage(i)
         if nbr == 0:
             listStorageOk.append(i)
