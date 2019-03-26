@@ -98,7 +98,7 @@ def connect():
             b +=1
 
         elif nbr == 2:
-            listStoragCritical.append(i)
+            listStorageCritical.append(i)
             freeStorageCritical.append(freeS)
             StorageCritical.append(percent)
             c +=1
