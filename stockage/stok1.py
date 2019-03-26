@@ -54,7 +54,7 @@ def connect():
     s = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode = ssl.CERT_NONE
     try:
-        c = SmartConnect(host=args.host, user=args.user, pwd=args.password, sslContext=s)
+        c = SmartConnect(host=args.host, user=args.user, pwd=args.password)
 
     except IOError as e:
         print("Could not connect to datastore" + str(e))
