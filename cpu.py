@@ -125,8 +125,7 @@ def main():
 
     print("\n list host Critical")
     for k in range(len(lCritical)):
-        print(c"CPU  used\t",cC[k],"%")
-
+        print(lCritical[k],"CPU  used\t",cC[k],"%")
 
     print("\n list host Warning")
     for n in range(len(lWarning)):
