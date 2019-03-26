@@ -84,28 +84,28 @@ def connect():
     d=0
 
     for i in ds:
-        print(i.name)
+        #print(i.name)
         nbr, percent, freeS = informationStorage(i)
         if nbr == 0:
-            listStorageOk.append(i)
+            listStorageOk.append(i.name)
             freeStorageOk.append(freeS)
             StorageOk.append(percent)
             a +=1
 
         elif nbr == 1:
-            listStorageWarning.append(i)
+            listStorageWarning.append(i.name)
             freeStorageWarning.append(freeS)
             StorageWarning.append(percent)
             b +=1
 
         elif nbr == 2:
-            listStorageCritical.append(i)
+            listStorageCritical.append(i.name)
             freeStorageCritical.append(freeS)
             StorageCritical.append(percent)
             c +=1
 
         else:
-            listStoragUnknown.append(i)
+            listStoragUnknown.append(i.name)
             freeStorageUnknown.append(freeS)
             StorageUnknown.append(percent)
             d +=1
