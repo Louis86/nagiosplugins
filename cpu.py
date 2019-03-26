@@ -89,22 +89,22 @@ def connect():
         for host in hosts:
             p, cpu = printHostInformation(host)
             if p == 0:
-                listHostOk.append(host)
+                listHostOk.append(host.name)
                 cpuOk.append(cpu)
                 a +=1
 
             elif p == 1:
-                listHostWarning.append(host)
+                listHostWarning.append(host.name)
                 cpuWarning.append(cpu)
                 b +=1
 
             elif p == 2:
-                listHostCritical.append(host)
+                listHostCritical.append(host.name)
                 cpuCritical.append(cpu)
                 c +=1
 
             else:
-                listHostUnknown.append(host)
+                listHostUnknown.append(host.name)
                 cpuUnknown.append(cpu)
                 d +=1
 
@@ -125,7 +125,7 @@ def main():
 
     print("\n list host Critical")
     for k in range(len(lCritical)):
-        print(lCritical[k],"CPU  used\t",cC[k],"%")
+        print(c"CPU  used\t",cC[k],"%")
 
 
     print("\n list host Warning")
