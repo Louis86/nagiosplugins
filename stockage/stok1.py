@@ -130,21 +130,21 @@ def main():
 
     print("\n list storage Critical")
     for k in range(len(lCritical)):
-        print(sC[k],"GB free and storage  used\t",fC[k],"%")
+        print(lCritical[k]," has",sC[k],"GB free and storage  used\t",fC[k],"%")
 
 
     print("\n list storage Warning")
     for n in range(len(lWarning)):
-        print(sW[n],"GB free and storage  used\t",fW[n],"%")
+        print(lWarning[n], "has", sW[n],"GB free and storage  used\t",fW[n],"%")
 
 
     print("\n list storage Unknown")
     for p in range(len(lUnknown)):
-        print(sU[p],"GB free and storage  used\t",fU[p],"%")
+        print(lUnknown[p],"has",sU[p],"GB free and storage  used\t",fU[p],"%")
 
     print("\n list storage Ok")
     for x in range(len(lOk)) :
-        print(sO[x],"GB free and storage  used\t",fO[x],"%")
+        print(lOk[x],"has",sO[x],"GB free and storage  used\t",fO[x],"%")
 
 
     if  t[2] != 0:
